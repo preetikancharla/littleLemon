@@ -22,39 +22,80 @@ struct Onboarding: View {
     var body: some View {
         
         NavigationView{
-            
-            VStack (alignment: .center, spacing: 100){
-               
-                NavigationLink(destination: Home(), isActive: $isLoggedIn){EmptyView()}
+            VStack {
                 
-                VStack (alignment: .leading, spacing: 40){
-                    TextField("First Name", text: $firstName)
-                        .padding()
-                        .border(Color("Secondary4"), width: 1)
-                                            
-                    TextField("Last Name", text: $lastName)
-                        .padding()
-                        .border(Color("Secondary4"), width: 1)
+                // Navigation bar
+                Image("logo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height:40)
+              
+                
+                Spacer()
+                
+                VStack(alignment: .leading) {
+                    Text("LittleLemon")
+                        .font(.custom("MarkaziText", size: 64))
+                        .fontWeight(.medium)
+                        .foregroundColor(Color("Primary2"))
+                        .padding(.leading)
+                        
+                    Text("Chicago")
+                        .font(.custom("MarkaziText", size: 40))
+                        .fontWeight(.regular)
+                        .foregroundColor(Color("Secondary3"))
+                        .padding(.leading)
                     
-                    TextField("Email", text: $email)
-                        .padding()
-                        .border(Color("Secondary4"), width: 1)
-                }
-                
-                Button(action:{
-                    if (firstName.isEmpty || lastName.isEmpty || email.isEmpty) {
-                        print("All fields are necessary")
-                    } else {
-                        userFirstName = firstName
-                        userLastName = lastName
-                        userEmail = email
-                        isLoggedIn = true
+                    HStack {
+                        Text("We are a family owned\nMediterranean restaurant,\nfocused on traditional\nrecipes served with\na modern twist.")
+                            .font(.custom("Karla", size: 18))
+                            .fontWeight(.medium)
+                            .foregroundColor(Color("Secondary3"))
+                            .padding()
+                            .lineLimit(5)
+                        Image("profile_picture")
+                            .resizable()
+                            .scaledToFit()
+                            //.frame(width:120, height:120)
+                            .padding([.horizontal, .bottom])
+                            
                     }
-                }) {
-                    Text("Register")
-                }.buttonStyle(.bordered)
-                
-            }.padding()
+                }.background(Color("Primary1"))
+                    
+         
+                VStack (alignment: .center, spacing: 100){
+                    
+                    NavigationLink(destination: Home(), isActive: $isLoggedIn){EmptyView()}
+                    
+                    VStack (alignment: .leading, spacing: 40){
+                        TextField("First Name", text: $firstName)
+                            .padding()
+                            .border(Color("Secondary4"), width: 1)
+                        
+                        TextField("Last Name", text: $lastName)
+                            .padding()
+                            .border(Color("Secondary4"), width: 1)
+                        
+                        TextField("Email", text: $email)
+                            .padding()
+                            .border(Color("Secondary4"), width: 1)
+                    }
+                    
+                    Button(action:{
+                        if (firstName.isEmpty || lastName.isEmpty || email.isEmpty) {
+                            print("All fields are necessary")
+                        } else {
+                            userFirstName = firstName
+                            userLastName = lastName
+                            userEmail = email
+                            isLoggedIn = true
+                        }
+                    }) {
+                        Text("Register")
+                    }.buttonStyle(.bordered)
+                    
+                }
+            }
         }
     }
 }
