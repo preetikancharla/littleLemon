@@ -14,6 +14,8 @@
 		1ED3258D2AF129EB007742DC /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED3258C2AF129EB007742DC /* Home.swift */; };
 		1ED3258F2AF12A5D007742DC /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED3258E2AF12A5D007742DC /* Menu.swift */; };
 		1ED325912AF1330E007742DC /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED325902AF1330E007742DC /* UserProfile.swift */; };
+		1ED325942AF13CA5007742DC /* FetchedObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED325922AF13CA5007742DC /* FetchedObjects.swift */; };
+		1ED325952AF13CA5007742DC /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED325932AF13CA5007742DC /* Persistence.swift */; };
 		1EEC39222AF03E6D00D335DD /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEC39212AF03E6D00D335DD /* Onboarding.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +28,8 @@
 		1ED3258C2AF129EB007742DC /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		1ED3258E2AF12A5D007742DC /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		1ED325902AF1330E007742DC /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		1ED325922AF13CA5007742DC /* FetchedObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedObjects.swift; sourceTree = "<group>"; };
+		1ED325932AF13CA5007742DC /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		1EEC39212AF03E6D00D335DD /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +71,8 @@
 				1ED3258C2AF129EB007742DC /* Home.swift */,
 				1ED3258E2AF12A5D007742DC /* Menu.swift */,
 				1ED325902AF1330E007742DC /* UserProfile.swift */,
+				1ED325922AF13CA5007742DC /* FetchedObjects.swift */,
+				1ED325932AF13CA5007742DC /* Persistence.swift */,
 			);
 			path = LittleLemon;
 			sourceTree = "<group>";
@@ -158,10 +164,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1ED3258B2AF128FB007742DC /* MenuModel.swift in Sources */,
+				1ED325952AF13CA5007742DC /* Persistence.swift in Sources */,
 				1EEC39222AF03E6D00D335DD /* Onboarding.swift in Sources */,
 				1ED325912AF1330E007742DC /* UserProfile.swift in Sources */,
 				1ED3258D2AF129EB007742DC /* Home.swift in Sources */,
 				1E2B50FE2AEFEA62005B1C47 /* LittleLemonApp.swift in Sources */,
+				1ED325942AF13CA5007742DC /* FetchedObjects.swift in Sources */,
 				1ED3258F2AF12A5D007742DC /* Menu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
