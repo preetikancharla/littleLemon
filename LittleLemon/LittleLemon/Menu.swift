@@ -11,6 +11,8 @@ import CoreData
 struct Menu: View {
     
     @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var userData: UserData
+    
     @State var searchText: String = ""
     @State var categoryFilterText: String = ""
     
@@ -80,78 +82,82 @@ struct Menu: View {
             .frame(maxWidth: .infinity)
             .background(Color("Primary1"))
         
-            Text("Order for delivery")
-                .textCase(.uppercase)
-                .font(.custom("Karla-ExtraBold", size: 20))
+            VStack(alignment: .leading) {
+                Text("Order for delivery")
+                    .textCase(.uppercase)
+                    .font(.custom("Karla-ExtraBold", size: 20))
                 
-            
-            HStack {
-                Button(action: {
-                    categoryFilterText = (categoryFilterText == "Starters") ? "" : "Starters"
-                    print("Category text is" , categoryFilterText)
-                }) {
-                    Text("Starters")
-                        .font(.custom("Karla-Bold", size: 16))
-                }.buttonStyle(.bordered)
-                    .background(Color(categoryFilterText == "Starters" ? "Primary1" : "Secondary3"))
-                    .foregroundColor(Color(categoryFilterText == "Starters" ? "Secondary3" : "Primary1"))
                 
-                Button(action: {
-                    categoryFilterText = (categoryFilterText == "Mains") ? "" : "Mains"
-                }) {
-                    Text("Mains")
-                        .font(.custom("Karla-Bold", size: 16))
-                }.buttonStyle(.bordered)
-                    .background(Color(categoryFilterText == "Mains" ? "Primary1" : "Secondary3"))
-                    .foregroundColor(Color(categoryFilterText == "Mains" ? "Secondary3" : "Primary1"))
-                
-                Button(action: {
-                    categoryFilterText = (categoryFilterText == "Desserts") ? "" : "Desserts"
-                }) {
-                    Text("Desserts")
-                        .font(.custom("Karla-Bold", size: 16))
-                }.buttonStyle(.bordered)
-                    .background(Color(categoryFilterText == "Desserts" ? "Primary1" : "Secondary3"))
-                    .foregroundColor(Color(categoryFilterText == "Desserts" ? "Secondary3" : "Primary1"))
-                
-                Button(action: {
+                HStack {
+                    Button(action: {
+                        categoryFilterText = (categoryFilterText == "Starters") ? "" : "Starters"
+                        print("Category text is" , categoryFilterText)
+                    }) {
+                        Text("Starters")
+                            .font(.custom("Karla-Bold", size: 16))
+                    }.buttonStyle(.bordered)
+                        .background(Color(categoryFilterText == "Starters" ? "Primary1" : "Secondary3"))
+                        .foregroundColor(Color(categoryFilterText == "Starters" ? "Secondary3" : "Primary1"))
                     
-                    categoryFilterText = (categoryFilterText == "Sides") ? "" : "Sides"
-                }) {
-                    Text("Sides")
-                        .font(.custom("Karla-Bold", size: 16))
-                }.buttonStyle(.bordered)
-                    .background(Color(categoryFilterText == "Sides" ? "Primary1" : "Secondary3"))
-                    .foregroundColor(Color(categoryFilterText == "Sides" ? "Secondary3" : "Primary1"))
-            }.padding(.bottom, 10)
-            
+                    Button(action: {
+                        categoryFilterText = (categoryFilterText == "Mains") ? "" : "Mains"
+                    }) {
+                        Text("Mains")
+                            .font(.custom("Karla-Bold", size: 16))
+                    }.buttonStyle(.bordered)
+                        .background(Color(categoryFilterText == "Mains" ? "Primary1" : "Secondary3"))
+                        .foregroundColor(Color(categoryFilterText == "Mains" ? "Secondary3" : "Primary1"))
+                    
+                    Button(action: {
+                        categoryFilterText = (categoryFilterText == "Desserts") ? "" : "Desserts"
+                    }) {
+                        Text("Desserts")
+                            .font(.custom("Karla-Bold", size: 16))
+                    }.buttonStyle(.bordered)
+                        .background(Color(categoryFilterText == "Desserts" ? "Primary1" : "Secondary3"))
+                        .foregroundColor(Color(categoryFilterText == "Desserts" ? "Secondary3" : "Primary1"))
+                    
+                    Button(action: {
+                        
+                        categoryFilterText = (categoryFilterText == "Sides") ? "" : "Sides"
+                    }) {
+                        Text("Sides")
+                            .font(.custom("Karla-Bold", size: 16))
+                    }.buttonStyle(.bordered)
+                        .background(Color(categoryFilterText == "Sides" ? "Primary1" : "Secondary3"))
+                        .foregroundColor(Color(categoryFilterText == "Sides" ? "Secondary3" : "Primary1"))
+                }.padding(.bottom, 10)
+                
+            }
             
             FetchedObjects(predicate: buildPredicate(), sortDescriptors: buildSortDescriptors()) {
                 (dishes: [Dish]) in
                 List {
-                    ForEach(dishes) {
+                    ForEach(dishes, id:\.id) {
                         dish in
-                        HStack (spacing: 5) {
-                            VStack (alignment:.leading, spacing: 10){
-                                Text(dish.title ?? "")
-                                    .font(.custom("Karla-Bold", size: 18))
-                                Text(dish.desc ?? "")
-                                    .font(.custom("Karla-Regular", size: 16))
-                                Text(numberFormatter.string(for: Double(dish.price ?? "0.0") ?? 0.0 ) ?? "Free")
-                                    .font(.custom("Karla-Medium", size: 16))
-                            }
-                            Spacer()
-                            AsyncImage(url: URL(string: dish.image!)) {
-                                phase in
-                                if let image = phase.image {
-                                    image.resizable()
-                                } else if phase.error != nil {
-                                    Color.red
-                                } else {
-                                    Color.blue
+                        NavigationLink(destination: MenuItemDetails(dish: dish)){
+                            HStack (spacing: 5) {
+                                VStack (alignment:.leading, spacing: 10){
+                                    Text(dish.title ?? "")
+                                        .font(.custom("Karla-Bold", size: 18))
+                                    Text(dish.desc ?? "")
+                                        .font(.custom("Karla-Regular", size: 16))
+                                    Text(numberFormatter.string(for: Double(dish.price ?? "0.0") ?? 0.0 ) ?? "Free")
+                                        .font(.custom("Karla-Medium", size: 16))
                                 }
-                            }.frame(width: 100, height: 100)
+                                Spacer()
+                                AsyncImage(url: URL(string: dish.image!)) {
+                                    phase in
+                                    if let image = phase.image {
+                                        image.resizable()
+                                    } else if phase.error != nil {
+                                        Color.red
+                                    } else {
+                                        Color.blue
+                                    }
+                                }.frame(width: 100, height: 100)
                                 
+                            }
                         }
                     }
                 }.listStyle(.plain)
@@ -178,6 +184,7 @@ struct Menu: View {
                 let menuList = try? decoder.decode(MenuList.self, from: data)
                 if let menuList = menuList {
                     for item in menuList.menu {
+                            
                         let dish = Dish(context: viewContext)
                         dish.id = Int16(item.id)
                         dish.title = item.title
@@ -185,6 +192,7 @@ struct Menu: View {
                         dish.image = item.image
                         dish.price = item.price
                         dish.category = item.category
+                       
                     }
                     try? viewContext.save()
                 }

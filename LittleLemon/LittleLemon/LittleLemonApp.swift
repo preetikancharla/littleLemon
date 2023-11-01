@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct LittleLemonApp: App {
+    
+    @StateObject var userData: UserData = UserData()
+    
     var body: some Scene {
         WindowGroup {
-            Onboarding()
+            Onboarding().environmentObject(userData)
         }
     }
 }

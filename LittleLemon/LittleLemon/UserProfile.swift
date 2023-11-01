@@ -9,21 +9,17 @@ import SwiftUI
 
 struct UserProfile: View {
     
-//    let firstName = UserDefaults.standard.string(forKey: "UserFirstName")
-//    let lastName = UserDefaults.standard.string(forKey: "UserLastName")
-//    let email = UserDefaults.standard.string(forKey: "UserEmail")
-    
     @State var firstName: String = ""
     @State var lastName: String = ""
     @State var email: String = ""
     @State var phone: String = ""
-    
     @State var orderStatusesNotifications: Bool = true
     @State var passwordChangesNotifications: Bool = true
     @State var specialOffersNotifications: Bool = true
     @State var newsLetterNotifications: Bool = true
     
     @Environment(\.presentationMode) var presentation
+    @EnvironmentObject var userData: UserData
     
     
     var body: some View {
@@ -55,6 +51,7 @@ struct UserProfile: View {
             Group{
                 Text("Personal Information")
                     .font(.custom("Karla-Medium", size: 18))
+                
                 HStack (alignment:.center) {
                     Image("profile_picture")
                         .resizable()
@@ -169,7 +166,7 @@ struct UserProfile: View {
             Spacer()
             
             Button(action:{
-                UserDefaults.standard.set(false, forKey: "LoggedIn")
+                userData.isLoggedIn = false
                 self.presentation.wrappedValue.dismiss()
             }) {
                 Text("Logout")
@@ -188,6 +185,15 @@ struct UserProfile: View {
                 Spacer()
                 Button(action: {
                     
+                    firstName = userData.userFirstName
+                    lastName = userData.userLastName
+                    email = userData.userEmail
+                    phone = userData.userPhone
+                    orderStatusesNotifications = userData.orderStatusesNotifications
+                    passwordChangesNotifications = userData.passwordChangesNotifications
+                    specialOffersNotifications = userData.specialOffersNotifications
+                    newsLetterNotifications = userData.newsLetterNotifications
+                    
                 }){
                     Text("Discard changes")
                 }.padding()
@@ -202,6 +208,15 @@ struct UserProfile: View {
                 
                 Button(action: {
                 
+                    userData.userFirstName = firstName
+                    userData.userLastName = lastName
+                    userData.userEmail = email
+                    userData.userPhone = phone
+                    userData.orderStatusesNotifications = orderStatusesNotifications
+                    userData.passwordChangesNotifications = passwordChangesNotifications
+                    userData.specialOffersNotifications = specialOffersNotifications
+                    userData.newsLetterNotifications = newsLetterNotifications
+                    
                 }){
                     Text("Save changes")
                 }.padding()
@@ -216,6 +231,18 @@ struct UserProfile: View {
             Spacer()
             
         }.padding(.horizontal, 10)
+            .onAppear(perform: {
+                // Get the initial values
+                firstName = userData.userFirstName
+                lastName = userData.userLastName
+                email = userData.userEmail
+                phone = userData.userPhone
+                orderStatusesNotifications = userData.orderStatusesNotifications
+                passwordChangesNotifications = userData.passwordChangesNotifications
+                specialOffersNotifications = userData.specialOffersNotifications
+                newsLetterNotifications = userData.newsLetterNotifications
+               
+            })
     }
 }
 

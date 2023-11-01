@@ -9,15 +9,13 @@ import SwiftUI
 
 struct Onboarding: View {
    
-    @AppStorage ("UserFirstName") var userFirstName:String = ""
-    @AppStorage ("UserLastName") var userLastName:String = ""
-    @AppStorage ("UserEmail") var userEmail:String = ""
-    @AppStorage ("LoggedIn") var isLoggedIn: Bool = false
+    @EnvironmentObject var userData: UserData
     
     // Variables
     @State var firstName: String = ""
     @State var lastName: String = ""
     @State var email: String = ""
+   
     
     var body: some View {
         
@@ -62,9 +60,14 @@ struct Onboarding: View {
                 
                 Spacer()
          
-                VStack (alignment: .center){
+                VStack (alignment: .leading){
                     
-                    NavigationLink(destination: Home(), isActive: $isLoggedIn){EmptyView()}
+                    NavigationLink(destination: Home(), isActive: userData.$isLoggedIn){EmptyView()}
+                    
+                    Text("Welcome! Give us a few details to get started.")
+                        .font(.custom("Karla-Medium", size: 16))
+                        .padding(.bottom,10)
+                    
                     
                     VStack (alignment: .leading, spacing: 10){
                         (Text("First name:") + Text(" *").baselineOffset(1.0))
@@ -97,7 +100,7 @@ struct Onboarding: View {
                                     .stroke(Color("Secondary3"), lineWidth: 2)
                                 )
                             .autocorrectionDisabled(true)
-                    }.padding(.horizontal)
+                    }
                     
                     Spacer()
                     
@@ -105,10 +108,10 @@ struct Onboarding: View {
                         if (firstName.isEmpty || lastName.isEmpty || email.isEmpty) {
                             print("All fields are necessary")
                         } else {
-                            userFirstName = firstName
-                            userLastName = lastName
-                            userEmail = email
-                            isLoggedIn = true
+                            userData.userFirstName = firstName
+                            userData.userLastName = lastName
+                            userData.userEmail = email
+                            userData.isLoggedIn = true
                         }
                     }) {
                         Text("Log in")
@@ -129,8 +132,4 @@ struct Onboarding: View {
     }
 }
 
-struct Onboarding_Previews: PreviewProvider {
-    static var previews: some View {
-        Onboarding()
-    }
-}
+
