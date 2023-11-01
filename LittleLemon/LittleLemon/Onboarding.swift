@@ -30,56 +30,76 @@ struct Onboarding: View {
                     .scaledToFit()
                     .frame(height:40)
               
-                
-                Spacer()
-                
-                VStack(alignment: .leading) {
-                    Text("LittleLemon")
-                        .font(.custom("MarkaziText", size: 64))
-                        .fontWeight(.medium)
+                // Hero Section
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("Little Lemon")
+                        .font(.custom("MarkaziText-Medium", size: 64))
                         .foregroundColor(Color("Primary2"))
-                        .padding(.leading)
+                        .padding(.horizontal, 10)
                         
                     Text("Chicago")
-                        .font(.custom("MarkaziText", size: 40))
-                        .fontWeight(.regular)
+                        .font(.custom("MarkaziText-Regular", size: 40))
                         .foregroundColor(Color("Secondary3"))
-                        .padding(.leading)
+                        .padding(.horizontal, 10)
+                        .padding(.top, -20)
                     
                     HStack {
-                        Text("We are a family owned\nMediterranean restaurant,\nfocused on traditional\nrecipes served with\na modern twist.")
-                            .font(.custom("Karla", size: 18))
-                            .fontWeight(.medium)
+                        Text("We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.")
+                            .font(.custom("Karla-Medium", size: 18))
                             .foregroundColor(Color("Secondary3"))
-                            .padding()
                             .lineLimit(5)
-                        Image("profile_picture")
+                        Image("restaurant")
                             .resizable()
                             .scaledToFit()
-                            //.frame(width:120, height:120)
-                            .padding([.horizontal, .bottom])
-                            
-                    }
-                }.background(Color("Primary1"))
-                    
+                            .frame(width:140, height:140)
+                    }.padding(.horizontal, 10)
+                        .padding(.top, -20)
+                        .padding(.bottom, 10)
+                        
+                }
+                .frame(maxWidth: .infinity)
+                .background(Color("Primary1"))
+                
+                Spacer()
          
-                VStack (alignment: .center, spacing: 100){
+                VStack (alignment: .center){
                     
                     NavigationLink(destination: Home(), isActive: $isLoggedIn){EmptyView()}
                     
-                    VStack (alignment: .leading, spacing: 40){
+                    VStack (alignment: .leading, spacing: 10){
+                        (Text("First name:") + Text(" *").baselineOffset(1.0))
+                            .font(.custom("Karla-Medium", size: 16))
                         TextField("First Name", text: $firstName)
-                            .padding()
-                            .border(Color("Secondary4"), width: 1)
-                        
+                            .padding([.vertical, .leading], 5)
+                            .font(.custom("Karla-Regular", size: 18))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 5)
+                                    .stroke(Color("Secondary3"), lineWidth: 2)
+                                )
+                            .autocorrectionDisabled(true)
+                        (Text("Last name:") + Text(" *").baselineOffset(1.0))
+                            .font(.custom("Karla-Medium", size: 16))
                         TextField("Last Name", text: $lastName)
-                            .padding()
-                            .border(Color("Secondary4"), width: 1)
-                        
+                            .padding([.vertical, .leading], 5)
+                            .font(.custom("Karla-Regular", size: 18))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 5)
+                                    .stroke(Color("Secondary3"), lineWidth: 2)
+                                )
+                            .autocorrectionDisabled(true)
+                        (Text("Email:") + Text(" *").baselineOffset(1.0))
+                            .font(.custom("Karla-Medium", size: 16))
                         TextField("Email", text: $email)
-                            .padding()
-                            .border(Color("Secondary4"), width: 1)
-                    }
+                            .padding([.vertical, .leading], 5)
+                            .font(.custom("Karla-Regular", size: 18))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 5)
+                                    .stroke(Color("Secondary3"), lineWidth: 2)
+                                )
+                            .autocorrectionDisabled(true)
+                    }.padding(.horizontal)
+                    
+                    Spacer()
                     
                     Button(action:{
                         if (firstName.isEmpty || lastName.isEmpty || email.isEmpty) {
@@ -91,10 +111,19 @@ struct Onboarding: View {
                             isLoggedIn = true
                         }
                     }) {
-                        Text("Register")
-                    }.buttonStyle(.bordered)
+                        Text("Log in")
+                    }
+                    .frame(maxWidth:.infinity)
+                    .padding(.vertical)
+                    .font(.custom("Karla-ExtraBold", size: 16))
+                    .fontWeight(.bold)
+                    .background(Color("Primary2"))
+                    .cornerRadius(16)
+                    .foregroundColor(Color("Secondary4"))
+                        
+                    Spacer()
                     
-                }
+                }.padding()
             }
         }
     }

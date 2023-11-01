@@ -18,6 +18,11 @@
 		1ED325972AF13D6E007742DC /* MenuList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED325962AF13D6E007742DC /* MenuList.swift */; };
 		1ED325992AF13DAA007742DC /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED325982AF13DAA007742DC /* MenuItem.swift */; };
 		1ED3259C2AF142A0007742DC /* ExampleDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1ED3259A2AF142A0007742DC /* ExampleDatabase.xcdatamodeld */; };
+		1ED325AA2AF1787D007742DC /* MarkaziText-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1ED325A72AF1786B007742DC /* MarkaziText-VariableFont_wght.ttf */; };
+		1ED325AC2AF180D9007742DC /* Karla-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1ED325AB2AF180D9007742DC /* Karla-ExtraBold.ttf */; };
+		1ED325AE2AF18173007742DC /* Karla-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1ED325AD2AF18173007742DC /* Karla-Medium.ttf */; };
+		1ED325B12AF181F4007742DC /* Karla-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1ED325AF2AF181F4007742DC /* Karla-Bold.ttf */; };
+		1ED325B22AF181F5007742DC /* Karla-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1ED325B02AF181F4007742DC /* Karla-Regular.ttf */; };
 		1EEC39222AF03E6D00D335DD /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEC39212AF03E6D00D335DD /* Onboarding.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +40,11 @@
 		1ED325982AF13DAA007742DC /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		1ED3259B2AF142A0007742DC /* ExampleDatabase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExampleDatabase.xcdatamodel; sourceTree = "<group>"; };
 		1ED325A22AF16606007742DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1ED325A72AF1786B007742DC /* MarkaziText-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MarkaziText-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		1ED325AB2AF180D9007742DC /* Karla-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Karla-ExtraBold.ttf"; sourceTree = "<group>"; };
+		1ED325AD2AF18173007742DC /* Karla-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Karla-Medium.ttf"; sourceTree = "<group>"; };
+		1ED325AF2AF181F4007742DC /* Karla-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Karla-Bold.ttf"; sourceTree = "<group>"; };
+		1ED325B02AF181F4007742DC /* Karla-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Karla-Regular.ttf"; sourceTree = "<group>"; };
 		1EEC39212AF03E6D00D335DD /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +115,11 @@
 		1ED3259D2AF165B2007742DC /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				1ED325A72AF1786B007742DC /* MarkaziText-VariableFont_wght.ttf */,
+				1ED325AB2AF180D9007742DC /* Karla-ExtraBold.ttf */,
+				1ED325AF2AF181F4007742DC /* Karla-Bold.ttf */,
+				1ED325B02AF181F4007742DC /* Karla-Regular.ttf */,
+				1ED325AD2AF18173007742DC /* Karla-Medium.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -167,8 +182,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1ED325AA2AF1787D007742DC /* MarkaziText-VariableFont_wght.ttf in Resources */,
+				1ED325AE2AF18173007742DC /* Karla-Medium.ttf in Resources */,
+				1ED325B12AF181F4007742DC /* Karla-Bold.ttf in Resources */,
 				1E2B51052AEFEA6F005B1C47 /* Preview Assets.xcassets in Resources */,
 				1E2B51022AEFEA6F005B1C47 /* Assets.xcassets in Resources */,
+				1ED325AC2AF180D9007742DC /* Karla-ExtraBold.ttf in Resources */,
+				1ED325B22AF181F5007742DC /* Karla-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
